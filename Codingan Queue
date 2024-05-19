@@ -1,38 +1,80 @@
 #include <iostream>
-#include <stack>
+#include <queue>
+#include <deque>
 
 using namespace std;
 
+// Fungsi untuk menambahkan elemen ke antrian
+void enqueue(queue<int>& q, int value) {
+    q.push(value);
+}
+
+// Fungsi untuk mengambil elemen dari antrian
+int dequeue(queue<int>& q) {
+    if (q.empty()) {
+        return -1; // Jika antrian kosong
+    }
+    int value = q.front();
+    q.pop();
+    return value;
+}
+
+// Fungsi untuk menambahkan elemen ke depan deque
+void pushFront(deque<int>& d, int value) {
+    d.push_front(value);
+}
+
+// Fungsi untuk mengambil elemen dari depan deque
+int popFront(deque<int>& d) {
+    if (d.empty()) {
+        return -1; // Jika deque kosong
+    }
+    int value = d.front();
+    d.pop_front();
+    return value;
+}
+
+// Fungsi untuk menambahkan elemen ke belakang deque
+void pushBack(deque<int>& d, int value) {
+    d.push_back(value);
+}
+
+// Fungsi untuk mengambil elemen dari belakang deque
+int popBack(deque<int>& d) {
+    if (d.empty()) {
+        return -1; // Jika deque kosong
+    }
+    int value = d.back();
+    d.pop_back();
+    return value;
+}
+
 int main() {
-    stack<string> film;
+    // Contoh penggunaan
+    queue<int> q;
+    deque<int> d;
 
-    film.push("Struktur Data");
-    film.push("Konsep Basis Data");
-    film.push("Statistika & Probabilitas");
+    // Menambahkan elemen ke antrian
+    enqueue(q, 1);
+    enqueue(q, 2);
+    enqueue(q, 3);
 
-    cout << "Isi stack:\n";
-    stack<string> tempStack = film;
+    // Mengambil elemen dari antrian
+    cout << "Mengambil elemen dari antrian: " << dequeue(q) << endl;
 
-    while (!tempStack.empty()) {
-        cout << tempStack.top() << endl;
-        tempStack.pop();
-    }
+    // Menambahkan elemen ke depan deque
+    pushFront(d, 4);
+    pushFront(d, 5);
 
-    cout << endl;
+    // Mengambil elemen dari depan deque
+    cout << "Mengambil elemen dari depan deque: " << popFront(d) << endl;
 
-    if (!film.empty()) {
-        cout << "Data yang akan dihapus: " << film.top() << endl;
-        film.pop();
-    } else {
-        cout << "Stack sudah kosong" << endl;
-        return 0;
-    }
+    // Menambahkan elemen ke belakang deque
+    pushBack(d, 6);
+    pushBack(d, 7);
 
-    cout << "\nIsi stack setelah penghapusan:\n";
-    while (!film.empty()) {
-        cout << film.top() << endl;
-        film.pop();
-    }
+    // Mengambil elemen dari belakang deque
+    cout << "Mengambil elemen dari belakang deque: " << popBack(d) << endl;
 
-    return 0;
+    return 0;
 }
