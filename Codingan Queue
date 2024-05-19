@@ -1,0 +1,38 @@
+#include <iostream>
+#include <stack>
+
+using namespace std;
+
+int main() {
+    stack<string> film;
+
+    film.push("Struktur Data");
+    film.push("Konsep Basis Data");
+    film.push("Statistika & Probabilitas");
+
+    cout << "Isi stack:\n";
+    stack<string> tempStack = film;
+
+    while (!tempStack.empty()) {
+        cout << tempStack.top() << endl;
+        tempStack.pop();
+    }
+
+    cout << endl;
+
+    if (!film.empty()) {
+        cout << "Data yang akan dihapus: " << film.top() << endl;
+        film.pop();
+    } else {
+        cout << "Stack sudah kosong" << endl;
+        return 0;
+    }
+
+    cout << "\nIsi stack setelah penghapusan:\n";
+    while (!film.empty()) {
+        cout << film.top() << endl;
+        film.pop();
+    }
+
+    return 0;
+}
